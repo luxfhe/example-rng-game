@@ -2,9 +2,9 @@
 
 pragma solidity >=0.8.13 <0.9.0;
 
-import "@fhenixprotocol/contracts/FHE.sol";
-import {Permissioned, Permission} from "@fhenixprotocol/contracts/access/Permissioned.sol";
-import {Console} from "@fhenixprotocol/contracts/utils/debug/Console.sol";
+import "@luxfhe/contracts/FHE.sol";
+import {Permissioned, Permission} from "@luxfhe/contracts/access/Permissioned.sol";
+import {Console} from "@luxfhe/contracts/utils/debug/Console.sol";
 
 contract RngBinaryGame is Permissioned {
   struct GameGuess {

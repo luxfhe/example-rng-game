@@ -14,9 +14,9 @@ jobs:
   test:
     services:
       # Label used to access the service container
-      localfhenix:
-        options: --name localfhenix
-        image: ghcr.io/fhenixprotocol/localfhenix:v0.3.2-alpha.4
+      localluxfhe:
+        options: --name localluxfhe
+        image: ghcr.io/luxfheprotocol/localluxfhe:v0.3.2-alpha.4
         ports:
           - 42000:3000
           - 42069:8547
@@ -43,13 +43,13 @@ jobs:
         run: "pnpm typechain"
 
       - name: "Make Money"
-        run: "pnpm fhenix:faucet"
+        run: "pnpm luxfhe:faucet"
 
       - name: "Test the contracts using Hardhat Network"
         run: "pnpm test:hardhat"
 
-      - name: "Test the contract using LocalFhenix"
-        run: "pnpm test:localfhenix"
+      - name: "Test the contract using Localluxfhe"
+        run: "pnpm test:localluxfhe"
 
       - name: "Add test summary"
         run: |
