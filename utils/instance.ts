@@ -1,5 +1,5 @@
 import { type SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
-import { type Permission } from "luxfhejs";
+import { type Permission } from "@luxfhe/sdk/node";
 import { type HardhatRuntimeEnvironment } from "hardhat/types/runtime";
 
 export const getTokensFromFaucet = async (
@@ -8,7 +8,7 @@ export const getTokensFromFaucet = async (
 ) => {
   if (hre.network.name === "localluxfhe") {
     if ((await hre.ethers.provider.getBalance(address)).toString() === "0") {
-      await hre.luxfhejs.getFunds(address);
+      await hre.luxfhe.getFunds(address);
     }
   }
 };
@@ -20,12 +20,12 @@ export const createPermissionForContract = async (
 ): Promise<Permission> => {
   const provider = hre.ethers.provider;
 
-  const permit = await hre.luxfhejs.generatePermit(
+  const permit = await hre.luxfhe.generatePermit(
     contractAddress,
     provider,
     signer,
   );
-  const permission = hre.luxfhejs.extractPermitPermission(permit);
+  const permission = hre.luxfhe.extractPermitPermission(permit);
 
   return permission;
 };

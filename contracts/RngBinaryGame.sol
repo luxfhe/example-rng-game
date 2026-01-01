@@ -2,9 +2,13 @@
 
 pragma solidity >=0.8.13 <0.9.0;
 
-import "@luxfhe/contracts/FHE.sol";
-import {Permissioned, Permission} from "@luxfhe/contracts/access/Permissioned.sol";
-import {Console} from "@luxfhe/contracts/utils/debug/Console.sol";
+import "@luxfi/contracts/fhe/FHE.sol";
+import {Permissioned, Permission} from "@luxfi/contracts/fhe/access/Permissioned.sol";
+
+// Simple console stub for development
+library Console {
+    function log(string memory) internal pure {}
+}
 
 contract RngBinaryGame is Permissioned {
   struct GameGuess {
@@ -53,10 +57,14 @@ contract RngBinaryGame is Permissioned {
     euint8 eGuess = FHE.asEuint8(uint256(_guess));
     Console.log("trivial encrypt finished");
 
-    bool lt = FHE.decrypt(FHE.lt(eGuess, game.number));
+    ebool eLt = FHE.lt(eGuess, game.number);
+    FHE.decrypt(eLt);
+    bool lt = FHE.reveal(eLt);
     Console.log("lt finished");
 
-    bool gt = FHE.decrypt(FHE.gt(eGuess, game.number));
+    ebool eGt = FHE.gt(eGuess, game.number);
+    FHE.decrypt(eGt);
+    bool gt = FHE.reveal(eGt);
     Console.log("gt finished");
 
     gameGuesses[msg.sender][game.guesses] = GameGuess({
