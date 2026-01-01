@@ -30,6 +30,7 @@ const config = {
   solidity: {
     version: "0.8.31",
     settings: {
+      evmVersion: "cancun",
       optimizer: {
         enabled: true,
         // https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options

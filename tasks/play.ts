@@ -95,11 +95,11 @@ const sendUncheckedTransaction = async (
 };
 
 task("task:play").setAction(async function (_, hre) {
-  const { luxfhejs, ethers, deployments } = hre;
+  const { luxfhe, ethers, deployments } = hre;
   const [signer] = await ethers.getSigners();
 
   if ((await ethers.provider.getBalance(signer.address)).toString() === "0") {
-    await luxfhejs.getFunds(signer.address);
+    await luxfhe.getFunds(signer.address);
   }
 
   let RngBinaryGame: Deployment;

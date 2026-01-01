@@ -41,7 +41,7 @@ able to follow it by yourself by reading the README and exploring its
 
 It comes with two luxfhe-specific hardhat plugins:
 
-- `luxfhe-hardhat-plugin`: The main plugin for luxfhe development in hardhat. It injects `luxfhejs` into the hardhat runtime environment, which allows you to interact with encrypted data in your tests and tasks.
+- `luxfhe-hardhat-plugin`: The main plugin for luxfhe development in hardhat. It injects `@luxfhe/sdk` into the hardhat runtime environment, which allows you to interact with encrypted data in your tests and tasks.
 - `luxfhe-hardhat-docker`: A plugin that allows you to run a local luxfhe testnet in a docker container. This is useful for testing your contracts in a sandbox before deploying them on a testnet or on mainnet.
 
 ## Quick start
@@ -106,5 +106,5 @@ For example, if the docker service is installed but not running, it might indica
 
 To learn more about the luxfhe Hardhat plugin, check out the [luxfhe Hardhat Plugin Repository](https://github.com/luxfheProtocol/luxfhe-hardhat-plugin).
 
-[gitpod]: https://gitpod.io/#https://github.com/luxfheprotocol/luxfhe-hardhat-example
+[gitpod]: https://gitpod.io/#https://github.com/luxfhe/luxfhe-hardhat-example
 [gitpod-badge]: https://img.shields.io/badge/Gitpod-Open%20in%20Gitpod-FFB45B?logo=gitpod
